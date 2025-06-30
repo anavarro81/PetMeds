@@ -1,9 +1,58 @@
 import React from 'react'
+import Header from './Header'
+import SearchPage from './Pages/SearchPage/SearchPage'
+import MyFavoritesPage from './Pages/MyFavoritesPage/MyFavoritesPage'
+import Layout from './Layout/Layout'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import CalculateDosePage from './Pages/CalculateDosePage/CalculateDosePage'
+import MedicineCabinetPage from './Pages/MedicineCabinetPage/MedicineCabinetPage';
+import RegisterMedicationsPage from './Pages/RegisterMedicationsPage/RegisterMedicationsPage';
 
 const App = () => {
-  return (
-    <h1 className="text-3xl font-bold underline"> React + Vite + Tailwind CSS </h1>
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        
+        {
+          index: true,
+          element: <SearchPage />
+        },
+
+        {
+          path: '/buscador',
+          element: <SearchPage />
+        },
+
+        {
+          path: '/calcular-dosis',
+          element: <CalculateDosePage />
+        }, 
+        {
+          path: '/mis-favoritos',
+          element: <MyFavoritesPage />
+
+        },
+        {
+          path: '/botiquin-virtual',
+          element: <MedicineCabinetPage />
+        },
+        {
+          path: '/alta-medicamento',
+          element: <RegisterMedicationsPage />
+        },
+      ]
+    }
+  ])
+
+
+
+  return (
+    <> 
+      <RouterProvider router={router} />
+    </>
   )
 }
 
