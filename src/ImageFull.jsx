@@ -5,9 +5,9 @@ const ImageFull = ({image, setshowImageModal}) => {
   return (
     
     
-    <div className='bg-gray-400 h-screen fixed top-0 left-0 w-full p-8'>
+    <div id="image-viewer" className='h-screen fixed top-0 left-0 w-full flex justify-center items-center bg-black/80'>
         <IoMdClose 
-          className="text-black absolute top-[20px] right-[35px] text-4xl font-bold cursor-pointer"
+          className="text-white absolute top-[20px] right-[35px] text-4xl font-bold cursor-pointer"
           onClick={() => setshowImageModal(false)}
         /> 
 

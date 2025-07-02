@@ -1,15 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MedicationCard from '../../MedicationCard'
-import { medications } from '../../../data/medications'
+//  import { medications } from '../../../data/medications'
 import ImageFull from '../../ImageFull'
+
 
 
 
 const SearchPage = () => {
 
   const [modal, setModal] = useState({show: false, image: null})
-  // const [imageModal, setimageModal] = useState(null)
-  const [filteredData, setfilteredData] = useState(medications)
+   const [imageModal, setimageModal] = useState(null)
+
+  
+  const [filteredData, setfilteredData] = useState()
+
+  // console.log ('medications ', medications)
+
+  useEffect(() => {
+    
+    const getData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/medicines')
+        const data = await response.json()
+        setfilteredData(data.medicines)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    getData()    
+    
+  }, [])
 
   const showModal = (show, image) => {
     setModal({show, image})

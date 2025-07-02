@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CalculateDosePage from './Pages/CalculateDosePage/CalculateDosePage'
 import MedicineCabinetPage from './Pages/MedicineCabinetPage/MedicineCabinetPage';
 import RegisterMedicationsPage from './Pages/RegisterMedicationsPage/RegisterMedicationsPage';
-
+import MedicineDetailPage from './Pages/MedicineDetailPage/MedicineDetailPage';
 const App = () => {
 
   const router = createBrowserRouter([
@@ -18,12 +18,17 @@ const App = () => {
         
         {
           index: true,
-          element: <SearchPage />
+          element: <SearchPage />,
         },
 
         {
           path: '/buscador',
           element: <SearchPage />
+        },
+
+        {
+          path: '/medicamento/:id',
+          element: <MedicineDetailPage />
         },
 
         {
